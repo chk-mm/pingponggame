@@ -12,6 +12,8 @@ screen.setup(width=800,height=600)
 screen.tracer(0)
 screen.listen()
 
+screen_speed = 0.08
+
 paddle_left = Paddle()
 score_pd_left = Score()
 score_pd_left.goto(-300, 200)
@@ -43,10 +45,12 @@ while game_is_on:
 
     if balls.xcor() == -250 and paddle_left.ycor()-50 <= balls.ycor() <= paddle_left.ycor()+50:
         balls.xspeed *= -1
+        screen_speed -= 0.002
         score_pd_left.write_score(10)
     if balls.xcor() == 250 and paddle_right.ycor()-50 <= balls.ycor() <= paddle_right.ycor()+50:
         balls.xspeed *= -1
         score_pd_right.write_score(10)
+        screen_speed -= 0.002
 
     if score_pd_right.score > score_pd_left.score:
         winner_real_time.winner('Right')
@@ -61,7 +65,8 @@ while game_is_on:
         else:
             winner_real_time.winner('Game over,Left')
 
-    time.sleep(1)
+    time.sleep(screen_speed)
+    print(screen_speed)
     screen.update()
 
 
