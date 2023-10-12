@@ -58,15 +58,14 @@ while game_is_on:
         winner_real_time.winner('Left')
 
     if balls.xcor() < -400 or balls.xcor() > 400:
-        balls.ball_stop()
-        game_is_on = False
+        balls.ball_center()
+        # game_is_on = False
         if score_pd_right.score > score_pd_left.score:
             winner_real_time.winner('Game over,Right')
         else:
             winner_real_time.winner('Game over,Left')
 
     time.sleep(screen_speed)
-    print(screen_speed)
     screen.update()
 
 
