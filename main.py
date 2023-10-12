@@ -41,10 +41,10 @@ while game_is_on:
     elif balls.ycor() > 260:
         balls.yspeed *= -1
 
-    if balls.distance(paddle_left) < 50:
+    if balls.xcor() == -250 and paddle_left.ycor()-50 <= balls.ycor() <= paddle_left.ycor()+50:
         balls.xspeed *= -1
         score_pd_left.write_score(10)
-    elif balls.distance(paddle_right) < 50:
+    if balls.xcor() == 250 and paddle_right.ycor()-50 <= balls.ycor() <= paddle_right.ycor()+50:
         balls.xspeed *= -1
         score_pd_right.write_score(10)
 
@@ -53,7 +53,7 @@ while game_is_on:
     else:
         winner_real_time.winner('Left')
 
-    if balls.xcor() < -350 or balls.xcor() > 350:
+    if balls.xcor() < -400 or balls.xcor() > 400:
         balls.ball_stop()
         game_is_on = False
         if score_pd_right.score > score_pd_left.score:
@@ -61,7 +61,7 @@ while game_is_on:
         else:
             winner_real_time.winner('Game over,Left')
 
-    time.sleep(0.08)
+    time.sleep(1)
     screen.update()
 
 
