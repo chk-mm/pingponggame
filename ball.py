@@ -11,5 +11,6 @@ class Ball(Turtle):
     def moving(self):
         self.goto(self.xcor()+self.xspeed,self.ycor()+self.yspeed)
 
-    def ball_stop(self):
+    def ball_center(self):
         self.goto(0,0)
+
